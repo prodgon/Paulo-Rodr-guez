@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width-device-width">
+    <meta name="author" content="Paulo"/>
+    <title>Ejercicio Enlace en Imagen</title>
+</head>
+<style>
+    .conten {
+            display: flex;
+            background-color:rgb(112, 211, 112);
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            text-align: center;
+            color: purple;  
+        }
+    .conten >div {
+        margin: 20px;
+        padding: 30px;
+        font-size:25px; 
+        font-weight: bold;
+    }
+    .conten img{
+        width: 300px;
+        height: 200px;
+    }
+    .texto{
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+<body>
+        <div class="texto">Algunos Efectos del Cambio Climático</div>
+        <div class="conten">
+                <div><img src="imgmapa/co2.jpg"><p>Efecto Invernadero</p></div>
+                <div><a href="Ejercicio Barra-Mapa.html"><img src="imgmapa/nivelmar.jpg"></a><p>Subida del nivel del mar</p></div>
+                <div><img src="imgmapa/deshielo.jpg"><p>Deshielo</p></div>
+        </div>
+<!--Se usan diferentez div class para dar diferentes atributos a las imagenes y sus textos como al contenedor Flexbox. La imagen como enlace se crea usando la etiqueta href dentro de una etiqueta a. Usar Flexbox permite crear un contenedor donde incluir las imagenes para que sea más sencillo modificar su tamaño y su distribución. Se añade el texto de debajo de la imagen con una etiqueta p para que se separe de la imagen y no aparezca justo debajo-->
+   
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Paulo"/>
+    <title>Ejercicio Barra de Progreso-Mapa</title>
+
+    <style> 
+        #barra{
+            width: 5%;
+            height: 10%;
+            background-color:rgb(248, 6, 6);
+            text-align: center;
+            color: rgb(251, 255, 0);
+            font-weight: bold;
+        }
+        #image{
+            width: 80%;
+            height: 50%;
+        }
+    </style>
+    <script>
+        var i = 0;
+        function nivel(){
+            if (i == 0){
+                i = 1;
+            var bar = document.getElementById("barra");
+            var im = document.getElementById("image");
+            var ancho = 0;
+            var id = setInterval (mapa, 500);/*Tiempo para cambiar la imagen en milisegundos*/
+            function mapa(){
+                if (ancho >= 6){/*Intervalo para mover la barra hasta el número indicado*/
+                    clearInterval(id);
+                    i = 0;
+                }
+                else{/*Movimiento de la barra y cambio de la imagen llamandola con su ruta mediante un innerHTML*/
+                    ancho= ancho+1;
+                    bar.style.width = ancho*10 + "%";
+                    bar.innerHTML = ancho + "m";
+                    im.innerHTML = "<img id= 'image' src='imgmapa/mapa"+ ancho +"metros.jpeg'>";
+                }
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Sea Level</h1>
+     <h3>Northern Europe</h3>
+
+    <div id= "progress">
+        <div id ="image"><img id= "image" src= "imgmapa/mapa0metros.jpeg"></div>
+        <div id= "barra">0m</div> 
+    </div>
+  <button onclick = "nivel()">>></button>
+</body>
+</html>
